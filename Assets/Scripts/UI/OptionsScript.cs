@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class OptionsScript : MonoBehaviour
 {
@@ -54,6 +56,10 @@ public class OptionsScript : MonoBehaviour
         Application.Quit();
     }
 
+    public void MainMenubutton()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 
 
 
