@@ -19,6 +19,7 @@ namespace Spells
                 case "Fireball":
                 {
                     
+                    
                     break;
                 }
                 case "Iceball":
@@ -32,7 +33,6 @@ namespace Spells
                     break;
                 }
             }
-            
             
             Debug.Log("Fireball used.");
         }

@@ -8,12 +8,13 @@ namespace Player
         Rigidbody2D _rb;
         [SerializeField] float speed = 5f;
         public bool isMoving;
-
+        public float health = 100f;
+        
         private void Awake()
         {
             _rb = this.gameObject.GetComponent<Rigidbody2D>();
         }
-
+        
         private void Update()
         {
             float horizontal = Input.GetAxisRaw("Horizontal");
@@ -35,15 +36,28 @@ namespace Player
                 Signals.Signals.Instance.OnSkillUse?.Invoke("Fireball");    
             }
         }
-
+        
+        public void TakeDamage(float damage)
+        {
+            health = health - damage;
+        }
+        
         private void FixedUpdate()
         {
             Move();
         }
-
+        
         private void Move()
         {
             _rb.MovePosition(_rb.position + _movement.normalized * (speed * Time.fixedDeltaTime));
+        }
+        
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.CompareTag("Enemy"))
+            {
+                TakeDamage(10);
+            }
         }
     }
 }
