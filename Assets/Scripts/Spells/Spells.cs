@@ -30,7 +30,7 @@ namespace Spells
             {
                 case "Fireball":
                 {
-                    
+                        AudioScript.PlaySound("FireBallSound");
                     GameObject Fireball = Instantiate(FireballSpell, playerCharacter.transform);
                     Rigidbody2D FireballRB = Fireball.GetComponent<Rigidbody2D>();
                     
@@ -44,6 +44,7 @@ namespace Spells
                 }
                 case "Iceball":
                 {
+                        AudioScript.PlaySound("IceBallShotSound");
                         GameObject IceBall = Instantiate(IceBallSpell, playerCharacter.transform);
                         Rigidbody2D IceBallRB = IceBall.GetComponent<Rigidbody2D>();
 
