@@ -6,9 +6,9 @@ namespace Enemy
     {
         public float health = 100f;
         public float movSpeed = 5f;
-        public float collisiondamage = 10f;
+        
         private Transform target;
-        public Player.Player player;
+        public GameObject player;
         
         public void TakeDamage (float damage)
         { 
@@ -27,6 +27,7 @@ namespace Enemy
         
         void Start()
         {
+            player = GameObject.Find("Player");
             target = player.transform;
         }
         
