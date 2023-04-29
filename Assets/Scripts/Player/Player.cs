@@ -42,6 +42,10 @@ namespace Player
             {
                 Signals.Signals.Instance.OnSkillUse?.Invoke("Fireball");    
             }
+            if (Input.GetButtonDown("Fire2"))
+            {
+                Signals.Signals.Instance.OnSkillUse?.Invoke("Iceball");
+            }
         }
         
         private void FixedUpdate()

@@ -9,11 +9,19 @@ public class EnemySpawner : MonoBehaviour
 
     public SpawnState state = SpawnState.COUNTING;
 
+    public GameObject PlayerCharacter;
+
     public Transform enemy;
 
     public float TimeBetweenWaves = 5f;
     public float CountDown = 2f;
     private int waveIndex = 0;
+    public int MaxEnemiesPerWave = 10;
+    public int MinEnemiesPerWave = 5;
+
+    public Vector2 SpawnAreaTopLeft;
+    public Vector2 SpawnAreaBottomRight;
+    
 
 
     private List<Transform> enemies = new List<Transform>();
@@ -63,6 +71,14 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
+
+        Vector2 spawnPosition = new Vector2(Random.Range(SpawnAreaTopLeft.x, SpawnAreaBottomRight.x),
+                                            Random.Range(SpawnAreaTopLeft.y, SpawnAreaBottomRight.y));
+
+        if (Vector2.Distance(spawnPosition, PlayerCharacter.transform.position) < 5f)
+        {
+            return;
+        }
         enemies.Add(Instantiate(enemy, transform.position, transform.rotation));
     }
 }

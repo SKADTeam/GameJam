@@ -6,6 +6,7 @@ namespace Enemy
     {
         public float health = 100f;
         public float movSpeed = 5f;
+
         
         private Transform target;
         public GameObject player;
@@ -34,6 +35,7 @@ namespace Enemy
         void Update()
         {
             Move();
+
         }
 
         public void Move()
@@ -43,5 +45,17 @@ namespace Enemy
                 transform.position = Vector2.MoveTowards(transform.position, target.position, movSpeed * Time.deltaTime);
             }
         }
+
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag("FireBall"))
+            {
+                TakeDamage(20);
+            }
+        }
+
+
+
     }
 }

@@ -20,8 +20,8 @@ public class BaseAtma : MonoBehaviour
         {
             if (baseAtabilir )
             {
-                StartCoroutine(Base());
-                StopCoroutine(Base());
+                StartCoroutine(BaseTeleport());
+                
             }
 
 
@@ -33,7 +33,7 @@ public class BaseAtma : MonoBehaviour
 
     }
 
-    IEnumerator Base()
+    IEnumerator BaseTeleport()
     {
         yield return new WaitForSeconds(2f);
         Camera.transform.position = new Vector3(-15f, 0f, -10f);

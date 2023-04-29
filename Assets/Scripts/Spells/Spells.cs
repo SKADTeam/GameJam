@@ -12,9 +12,12 @@ namespace Spells
     public class Spells : MonoBehaviour
     {
         public float FireballSpeed = 8f;
-        
+        public float IceBallSpeed = 4f;
+
         public GameObject FireballSpell;
         public Player.Player playerCharacter;
+
+        public GameObject IceBallSpell;
         
         private void OnEnable()
         {
@@ -37,13 +40,20 @@ namespace Spells
                     shootDirection.Normalize();
                     FireballRB.velocity = shootDirection * FireballSpeed;
                     
-                    
-                    
                     break;
                 }
                 case "Iceball":
                 {
-                    
+                        GameObject IceBall = Instantiate(IceBallSpell, playerCharacter.transform);
+                        Rigidbody2D IceBallRB = IceBall.GetComponent<Rigidbody2D>();
+
+                        Vector2 MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        Vector2 IceDirection = MousePosition - (Vector2)playerCharacter.transform.position;
+                        IceDirection.Normalize();
+                        IceBallRB.velocity = IceDirection * IceBallSpeed;
+
+
+
                     break;
                 }
                 case "Lightning":
@@ -60,5 +70,10 @@ namespace Spells
             Debug.Log(cenemy);
             //FireballRB.AddForce(cenemy, ForceMode2D.Impulse);
         }
+
+       
+
     }
+
+
 }
